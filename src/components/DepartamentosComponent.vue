@@ -27,6 +27,9 @@ class="btn btn-success">
 <router-link :to="'/update/' + dept.numero" class="btn btn-info">
     Edit
 </router-link>
+<router-link :to="'/delete/' + dept.numero" class="btn btn-danger">
+    Delete
+</router-link>
                     </td>
                 </tr>
             </tbody>

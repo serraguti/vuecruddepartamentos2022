@@ -41,4 +41,27 @@ export default class ServiceDepartamentos {
             });
         });
     }
+
+    //METODO PARA MODIFICAR UN DEPARTAMENTO
+    //RECIBIMOS EL DATO DEL OBJETO DEPARTAMENTO
+    updateDepartamento(departamento) {
+        return new Promise(function(resolve){
+            var request = "/api/departamentos";
+            var url = Global.urldepartamentos + request;
+            axios.put(url, departamento).then(response => {
+                resolve(response);
+            });
+        });
+    }
+
+    //METODO PARA ELIMINAR RECIBIENDO UN ID
+    deleteDepartamento(id){
+        return new Promise(function(resolve) {
+            var request = "/api/departamentos/" + id;
+            var url = Global.urldepartamentos + request;
+            axios.delete(url).then(response => {
+                resolve(response);
+            });
+        });
+    }
 }

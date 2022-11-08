@@ -2,7 +2,8 @@
     <div>
         <h1>Update</h1>
         <div style="width: 500px; margin: 0 auto" v-if="departamento">
-            <form method="post">
+            <form method="post" 
+            v-on:submit.prevent="updateDepartamento()">
                 <input type="hidden"
                     v-model="departamento.numero"/><br/>
                 <label>Nombre: </label>
@@ -23,7 +24,15 @@ const service = new ServiceDepartamentos();
 
     export default {
         name: "UpdateDepartamento",
-        data() {
+        methods: {
+            updateDepartamento() {
+                service.updateDepartamento(this.departamento).then(result => {
+                    console.log(result);
+                    this.$router.push("/");
+                });
+            }
+        }
+        ,data() {
             return {
                 departamento: null, id: 0
             }
